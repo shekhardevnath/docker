@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 RUN apt-get update && apt-get install -y \
 	nginx \
+        php7.2 \
 	php7.2-fpm \
 	php7.2-bcmath \
 	php7.2-cli \
@@ -15,5 +16,7 @@ RUN apt-get update && apt-get install -y \
 	php7.2-xml \
 	php7.2-zip 
 RUN rm /var/www/html/index.nginx-debian.html
-COPY index.html /var/www/html/
+COPY index.php /var/www/html/
+RUN rm /etc/nginx/sites-available/default
+COPY default /etc/nginx/sites-available/
 CMD ["nginx", "-g", "daemon off;"]
