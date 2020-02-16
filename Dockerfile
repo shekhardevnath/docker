@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
 	php7.2-readline \
 	php7.2-xml \
 	php7.2-zip 
+RUN rm -rf /var/lib/apt/lists/*
 RUN rm /var/www/html/index.nginx-debian.html
 COPY index.php /var/www/html/
 RUN rm /etc/nginx/sites-available/default
