@@ -19,4 +19,4 @@ RUN rm /var/www/html/index.nginx-debian.html
 COPY index.php /var/www/html/
 RUN rm /etc/nginx/sites-available/default
 COPY default /etc/nginx/sites-available/
-CMD ["nginx", "-g", "daemon off;"]
+CMD service php7.2-fpm start && nginx -g "daemon off;"
